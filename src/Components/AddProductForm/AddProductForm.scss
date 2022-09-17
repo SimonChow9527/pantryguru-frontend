@@ -1,0 +1,19 @@
+
+.add-product-form 
+{
+    position:relative;
+    width: 600px;
+    margin: 20px;
+    background-color: #B8E5F8;
+}
+.add-product-form label{
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .add-product-form {
+           
+            width: 100% !important;
+         
+        }
+}
