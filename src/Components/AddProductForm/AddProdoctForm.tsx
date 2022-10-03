@@ -23,8 +23,17 @@ function AddProductForm  () {
           ...productInfo,
           [event.target.id]: event.target.value,
         });
-          console.log(productInfo.name)
       };
+      const handleToggle = (event:React.ChangeEvent<HTMLInputElement>) =>{
+        setProductInfo({
+          ...productInfo,
+          saveAsTemplate:event.target.checked,
+        });
+      }
+
+      const handleSubmit = () =>{
+        console.log(productInfo)
+      }
 
     return (
       <form className="add-product-form row g-3">
@@ -79,12 +88,12 @@ function AddProductForm  () {
           <input
             type="text"
             className="form-control"
-            id="boughtfrom"
+            id="boughtFrom"
             placeholder="boughtfrom"
             onChange={(e) => handleChange(e)}
             value={productInfo.boughtFrom}
           />
-          <label htmlFor="boughtfrom">Bought from</label>
+          <label htmlFor="boughtFrom">Bought from</label>
         </div>
         <div className="form-floating col-md-3">
           <input
@@ -114,18 +123,20 @@ function AddProductForm  () {
             className="form-control"
             placeholder="Leave a comment here"
             id="comment"
+            onChange={(e) => handleChange(e)}
           ></textarea>
           <label htmlFor="comment">Comment</label>
         </div>
         <div className="col-md-6">
           <Toggle
-            id="cheese-status"
+            id="saveAsTemplate"
+            onChange={(e) => handleToggle(e)}
             defaultChecked={productInfo.saveAsTemplate}
           />
-          <label htmlFor="cheese-status">Save as template</label>
+          <label htmlFor="saveAsTemplate">Save as template</label>
         </div>
         <div className="col-md-3">
-          <button type="button" className="btn btn-outline-success">
+          <button type="button" onClick = {handleSubmit} className="btn btn-outline-success">
             Add Item
           </button>
         </div>
