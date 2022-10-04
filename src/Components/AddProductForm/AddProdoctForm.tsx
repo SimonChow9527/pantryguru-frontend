@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import "./AddProductForm.scss";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
@@ -10,11 +10,12 @@ function AddProductForm  () {
         brand: "",
         price: "",
         boughtFrom: "",
-        inMy:"",
+        inMy: "",
         expireDate: "",
         quantity: "1",
         comment: "",
-        saveAsTemplate:true,
+        createdOn: new Date().toISOString(),
+        saveAsTemplate: true,
       });
       const handleChange = (
         event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -136,7 +137,7 @@ function AddProductForm  () {
           <label htmlFor="saveAsTemplate">Save as template</label>
         </div>
         <div className="col-md-3">
-          <button type="button" onClick = {handleSubmit} className="btn btn-outline-success">
+          <button type="button" disabled ={productInfo.name === ""}onClick = {handleSubmit} className="btn btn-outline-success">
             Add Item
           </button>
         </div>
